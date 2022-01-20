@@ -10,10 +10,6 @@ export const Follow = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    startDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    }
   }
 )
-Follow.hasMany(User);
+Follow.belongsTo(User);

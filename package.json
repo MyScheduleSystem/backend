@@ -2,7 +2,7 @@
   "name": "myScheduleSystemBack",
   "version": "1.0.0",
   "description": "MyScheduleSystem back",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,7 +30,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.13.0",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

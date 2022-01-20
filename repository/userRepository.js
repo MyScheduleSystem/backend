@@ -1,4 +1,4 @@
-import { User } from '../model/user';
+import { User } from '../model/user.js';
 
 export async function findByUsername(username) { return User.findOne({ where: { username } }); }
 export async function findById(id) { return User.findByPk(id); }
