@@ -2,6 +2,7 @@ import express from 'express';
 import * as userController from '../controller/userController.js';
 import { body } from 'express-validator';
 import { validate } from '../middleware/validator.js';
+import { isAuthenticate } from '../middleware/authentication.js';
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ const validateCredential = [ // validate credential for signup
     .withMessage('Username should be at least 4 characters'),
   body('password')
     .trim()
-    .isLength({ min: 8 })
+    .isLength({ min: 4 })
     .withMessage('Password should be at least 8 characters'),
   validate,
 ];
@@ -27,5 +28,6 @@ const validateSignup = [ // validate for signup
 
 router.post('/signup', validateSignup, userController.signup);
 router.post('/login', validateCredential, userController.login);
+router.get('/me', isAuthenticate, userController.isMe);
 
 export default router;
