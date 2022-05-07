@@ -1,5 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { Calendar } from './calendar.js';
 const DataTypes = SQ.DataTypes;
 
 export const Container = sequelize.define(
@@ -22,3 +23,4 @@ export const Container = sequelize.define(
   },
   { timestamps: false }
 );
+Container.hasOne(Calendar);
