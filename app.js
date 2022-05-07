@@ -7,6 +7,7 @@ import { initSocket } from './socket/initSocket.js';
 import { sequelize } from './database/database.js';
 import userRouter from './router/userRouter.js';
 import containerRouter from './router/containerRouter.js';
+import calendarRouter from './router/calendarRouter.js';
 
 const app = express();
 const corsOptions = {
@@ -21,6 +22,7 @@ app.use(morgan('tiny'));
 
 app.use('/user', userRouter);
 app.use('/calendar', containerRouter);
+app.use('/schedule', calendarRouter);
 
 app.use((error, request, response, next) => {
   console.error(error);

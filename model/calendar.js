@@ -1,5 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { Todo } from './todo.js';
 const DataTypes = SQ.DataTypes;
 
 export const Calendar = sequelize.define(
@@ -26,3 +27,4 @@ export const Calendar = sequelize.define(
     },
     { timestamps: false }
 );
+Calendar.belongsTo(Todo)

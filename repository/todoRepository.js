@@ -1,4 +1,4 @@
-import { Todo } from "../model/todo";
+import { Todo } from "../model/todo.js";
 
 export async function getTodoByDate(date) {
     const todoDate = date.split("-")
