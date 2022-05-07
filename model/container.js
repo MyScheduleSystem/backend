@@ -13,11 +13,11 @@ export const Container = sequelize.define(
       primaryKey: true,
     },
     year: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     month: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

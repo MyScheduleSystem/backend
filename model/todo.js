@@ -15,25 +15,13 @@ export const Todo = sequelize.define(
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        year: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        month: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        day: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         startDate: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true,
 
         },
         endDate: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true,
         }
     },
