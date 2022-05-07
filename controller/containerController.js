@@ -8,3 +8,10 @@ export async function getByDate(request, response) {
     }
     response.status(200).json({ findDate })
 }
+
+export async function createContainer(request, response) {
+    const { date } = request.body
+    const createdDate = containerRepository.createContainer(date)
+    if(!createdDate) return response.status(401).json({ message: "Create Fail!!!!" })
+    response.status(200).json({ createdDate })
+}

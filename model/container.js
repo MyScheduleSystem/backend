@@ -23,4 +23,7 @@ export const Container = sequelize.define(
   },
   { timestamps: false }
 );
-Container.hasOne(Calendar);
+Container.hasMany(Calendar, {
+  foreignKey: "containerId",
+  sourceKey: "id"
+});
