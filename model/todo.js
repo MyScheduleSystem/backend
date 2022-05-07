@@ -11,7 +11,7 @@ export const Todo = sequelize.define(
             allowNull: false,
             primaryKey: true,
         },
-        todo: {
+        content: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
@@ -33,7 +33,8 @@ export const Todo = sequelize.define(
 
         },
         endDate: {
-            
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     },
     { timestamps: false }
