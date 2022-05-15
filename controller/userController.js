@@ -42,3 +42,21 @@ export async function isMe(request, response) {
   if(!user) { return response.status(409).json({ message: 'Cannot find user...' }); }
   response.status(200).json({ token: request.token, username: user.username });
 }
+
+export async function updateUser(request, response) {
+  const { username, name, email } = request.body;
+  const result = await userRepository.updateUser(
+    {
+      id: request.params.id,
+      username,
+      name,
+      email,
+    });
+  response.status(201).json(result);
+}
+
+export async function dropUser(request, response) {
+  const id = request.params.id;
+  const result = await userRepository.dropUser(id);
+  response.status(201).json(result);
+}

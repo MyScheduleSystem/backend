@@ -29,5 +29,7 @@ const validateSignup = [ // validate for signup
 router.post('/signup', validateSignup, userController.signup);
 router.post('/login', validateCredential, userController.login);
 router.get('/me', isAuthenticate, userController.isMe);
+router.post('/update/:id', userController.updateUser);
+router.post('/drop/:id', userController.dropUser);
 
 export default router;

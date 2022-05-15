@@ -7,26 +7,30 @@ export const User = sequelize.define(
   'user',
   {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
     username: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      comment: 'using login'
     },
     name: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      comment: 'real name'
     },
     password: {
       type: DataTypes.STRING(128),
       allowNull: false,
+      comment: 'using login'
     },
     email: {
       type: DataTypes.STRING(50),
       allowNull: false,
+      comment: 'register that check real person'
     },
   },
   { timestamps: false }
