@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post("/create", containerController.createContainer)
 router.get("/", containerController.getByUserId)
-router.post("/updateBox", containerController.updateBoxSize)
+router.post("/update_box", containerController.updateBoxSize)
 router.delete("/drop", containerController.dropContainer)
 export default router;
