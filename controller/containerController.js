@@ -1,17 +1,54 @@
 import * as containerRepository from '../repository/containerRepository.js'
 
-export async function getByDate(request, response) {
-    const { date } = request.body
-    const findDate = await containerRepository.getByDate(date)
-    if(!findDate) {
-        return response.status(401).json({ message: `cannot find ${date}!!`})
+export async function createContainer(request, response) {
+    const userId = request.body.userId
+    const isContainer = await containerRepository.getByUserId(userId)
+    if(isContainer) {
+        return response.status(409).json({ message: `You already have a container, container id = ${isContainer.id}` })
     }
-    response.status(200).json({ findDate })
+    const newContainer = await containerRepository.createContainer({
+        userId: userId
+    })
+    console.log(newContainer)
+    if(!newContainer) {
+        return response.status(401).json({ message: "Container creation fail" })
+    }
+    response.status(200).json({ message: `Container creation successful, container id = ${newContainer}` })
 }
 
-export async function createContainer(request, response) {
-    const { date } = request.body
-    const createdDate = containerRepository.createContainer(date)
-    if(!createdDate) return response.status(401).json({ message: "Create Fail!!!!" })
-    response.status(200).json({ createdDate })
+export async function getByUserId(request, response) {
+    const userId = request.body.userId
+    const isContainer = await containerRepository.getByUserId(userId)
+    if(isContainer) {
+        return response.status(200).json(isContainer)
+    }
+    response.status(401).json({ message: "You have not container" })
+}
+
+export async function updateBoxSize(request, response) {
+    const { userId, boxHeight, boxWidth } = request.body
+    
+    try {
+        await containerRepository.updateBoxSize(
+        {
+            userId,
+            boxHeight,
+            boxWidth,
+        })
+        const result = await containerRepository.getByUserId(userId)
+        response.status(201).json({ result })    
+    }
+    catch {
+        return response.status(401).json({ message: "Can not find container" })    
+    }
+}
+
+export async function dropContainer(request, response) {
+    try {
+        await containerRepository.dropContainer(request.body.userId)
+        response.status(201).json({ message: "Drop your container" })
+    }
+    catch {
+        return response.status(401).json({ message: "Drop container fail" })    
+    }
 }

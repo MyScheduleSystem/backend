@@ -1,14 +1,23 @@
 import { Container } from '../model/container.js';
 
-export async function getByDate(date) {
-    const scheduleDate = date.split("-")
-    return Container.findOne({ where: { year: scheduleDate[0], month: scheduleDate[1] } })
+export async function getByUserId(userId) {
+    return Container.findOne({ where: { userId: userId } });
 }
 
-export async function createContainer(date) {
-    const scheduleDate = date.split("-")
-    return Container.create({
-        year: scheduleDate[0],
-        month: scheduleDate[1],
-    })
+export async function createContainer(user) {
+    return Container.create(user).then((data) => data.dataValues.id);
+}
+
+export async function updateBoxSize(user) {
+    return Container.update(
+        {
+            boxHeight: user.boxHeight,
+            boxWidth: user.boxWidth,
+        },
+        { where: { userId: user.userId } }
+    )
+}
+
+export async function dropContainer(userId) {
+    return Container.destroy({ where: { userId: userId } })
 }
