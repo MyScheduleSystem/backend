@@ -9,7 +9,6 @@ export async function createContainer(request, response) {
     const newContainer = await containerRepository.createContainer({
         userId: userId
     })
-    console.log(newContainer)
     if(!newContainer) {
         return response.status(401).json({ message: "Container creation fail" })
     }
