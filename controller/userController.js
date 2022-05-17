@@ -17,7 +17,8 @@ export async function login(request, response) {
   const isPassword = await bcrypt.compare(password, user.password);
   if(!isPassword) { return response.status(401).json({ message: "Invalid username or password" }); }
   const token = createJwtToken(user.id);
-  response.status(200).json({ token, username });
+  const userId = user.id;
+  response.status(200).json({ token, username, userId });
 }
 
 export async function signup(request, response) {

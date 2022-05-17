@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 app.use(morgan('tiny'));
 
 app.use('/user', userRouter);
-app.use('/calendar', containerRouter);
+app.use('/container', containerRouter);
 app.use('/schedule', calendarRouter);
 
 app.use((error, request, response, next) => {

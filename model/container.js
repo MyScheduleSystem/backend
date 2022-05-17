@@ -1,6 +1,5 @@
 import SQ from 'sequelize';
 import { sequelize } from '../database/database.js';
-import { Calendar } from './calendar.js';
 const DataTypes = SQ.DataTypes;
 
 export const Container = sequelize.define(
@@ -12,18 +11,26 @@ export const Container = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    year: {
-      type: DataTypes.TEXT,
+    boxHeight: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 500,
     },
-    month: {
-      type: DataTypes.TEXT,
+    boxWidth: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 700,
+    },
+    boxPadding: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+    },
+    boxMargin: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
     },
   },
   { timestamps: false }
 );
-Container.hasMany(Calendar, {
-  foreignKey: "containerId",
-  sourceKey: "id"
-});
