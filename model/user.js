@@ -1,5 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { Calendar } from './calendar.js';
 import { Container } from './container.js';
 const DataTypes = SQ.DataTypes;
 
@@ -36,3 +37,4 @@ export const User = sequelize.define(
   { timestamps: false }
 );
 User.hasOne(Container)
+User.hasMany(Calendar)
